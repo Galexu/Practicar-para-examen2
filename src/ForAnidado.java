@@ -34,10 +34,33 @@ public class ForAnidado {
                     System.out.println(primo);
                     break;
                 case 6:
+                    System.out.println("Opcion n enteros elegida");
+                    nEnterosPrimos(dameNumero());
+                    break;
+                case 7:
+                    System.out.println("Opcion suma enteros elegida");
+                    int suma = sumaEnteros(dameNumero());
+                    System.out.println(suma);
+                    break;
+                case 8:
+                    System.out.println("Opcion multiplicacion enteros elegida");
+                    int multiplicacion = multiplicarEnteros(dameNumero());
+                    System.out.println(multiplicacion);
+                    break;
+                case 9:
+                    System.out.println("Opcion potencia elegida");
+                    double potencia = potencia(dameNumero(), dameNumero());
+                    System.out.println(potencia);
+                    break;
+                case 10:
+                    System.out.println("Opcion piramide elegida");
+                    piramida(dameTexto(), dameNumero());
+                    break;
+                case 11:
                     System.out.println("Has salido.");
                     break;
             }
-        } while (opcion != 6);
+        } while (opcion != 11);
 
 //        System.out.println("Di la altura");
 //        int altura = sc.nextInt();
@@ -116,9 +139,14 @@ public class ForAnidado {
             System.out.println("3. Dame texto.");
             System.out.println("4. Saluda.");
             System.out.println("5. Es primo");
-            System.out.println("6. Salir.");
+            System.out.println("6. N enteros Primo");
+            System.out.println("7. Suma enteros");
+            System.out.println("8. Multiplicacion enteros");
+            System.out.println("9. Potencia");
+            System.out.println("10. Piramide");
+            System.out.println("11. Salir.");
             opcion = sc.nextInt();
-        } while (opcion < 1 || opcion > 5);
+        } while (opcion < 1 || opcion > 11);
         return opcion;
     }
 
@@ -141,20 +169,72 @@ public class ForAnidado {
     }
 
     public static void saluda(String texto, int num) {
-        for (int i = 1; i <= num; i++){
+        for (int i = 1; i <= num; i++) {
             System.out.println(texto);
         }
     }
 
     public static boolean esPrimo(int num) {
         boolean primo = true;
-        for (int i = 2; i <= num - 1;i++) {
+        for (int i = 2; i <= num - 1; i++) {
             if (num % i == 0) {
                 primo = false;
                 break;
             }
         }
         return primo;
+    }
+
+    public static void nEnterosPrimos(int num) {
+        int contador = 1;
+        int numComp = 2;
+            while (contador <= num) {
+                if (esPrimo(numComp)) {
+                    System.out.println(numComp);
+                    numComp++;
+                    contador++;
+                } else {
+                    numComp++;
+                }
+            }
+    }
+
+    public static int sumaEnteros(int num) {
+        int resultado = 0;
+        for (int i = 1; i <= num; i++) {
+            resultado += i;
+        }
+        return  resultado;
+    }
+
+    public static int multiplicarEnteros(int num) {
+        int resultado = 1;
+        for (int i = 1; i <= num; i++) {
+            resultado *= i;
+        }
+        return resultado;
+    }
+
+//    public static double potencia(int num1, int num2) {
+//        return Math.pow(num1, num2);
+//    }
+
+    public static double potencia(int num1, int num2) {
+        double resultado = 1;
+        for (int i = 1; i <= num2; i++) {
+            resultado *= num1;
+        }
+        return resultado;
+    }
+
+    public static void piramida(String texto, int num) {
+        char caracter = texto.charAt(0);
+        for (int i = 1; i <= num; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(caracter);
+            }
+            System.out.println();
+        }
     }
 }
 
